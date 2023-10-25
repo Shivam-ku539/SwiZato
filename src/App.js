@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './Header';
-import Body from './body/Body';
+import Header from './components/Header';
+import Body from './components/body/Body';
 
 function App() {
   return (
