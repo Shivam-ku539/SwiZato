@@ -5,6 +5,8 @@ import Shimmer from '../Shimmer'
 
 const Body = () => {
   const [restList,setRestList]=useState([])
+  const[filteredrestList,setFilteredList]=useState([])
+  const[searchText,setSearchText]=useState("")
   
   useEffect(()=>{fetchData()},[])
 
@@ -14,22 +16,24 @@ const Body = () => {
     const json1=json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     let json2=json1.map((x)=>x.info)
     setRestList(json2)
-    // console.log(json2[0].name);
-    // console.log(json1)
+    setFilteredList(json2)
   }
 
-  if(restList.length===0){
-    return <Shimmer/>
-  }
-
-  return (
+  return restList.length===0?(<Shimmer/>) : (
     <div className='body'>
         <div className='filter'>
+          <div className='search'>
+            <input type='text' className='search-box' value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+            <button onClick={()=>{console.log(searchText)
+            const filteredRest=restList.filter((res)=>res.name.toLowerCase().includes(searchText.toLowerCase()))
+            setFilteredList(filteredRest)
+            }}>Search</button>
+          </div>
             <button className='filter-btn' onClick={()=>{let res1=restList.filter((filtered)=>filtered.avgRating>4)
             setRestList(res1)}}>Top Rated Restaurants</button>
         </div>
         <div className='res-container'>
-            {restList.map((restrnt)=><RestCards key={restrnt.id} restData={restrnt}/>)}
+            {filteredrestList.map((restrnt)=><RestCards key={restrnt.id} restData={restrnt}/>)}
         </div>
     </div>
   )
