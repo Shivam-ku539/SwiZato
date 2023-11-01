@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import {createBrowserRouter,RouterProvider} from 'react-router-dom';
-import About from './components/About';
+import About from './components/aboutUs/About' ;
 import Cart from './components/Cart';
 import Error from './components/Error';
 import Body from './components/body/Body';

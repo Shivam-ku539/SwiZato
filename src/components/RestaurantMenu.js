@@ -33,8 +33,7 @@ const RestaurantMenu = () => {
     <div className='menu'>
         <h2>{name}</h2>
         <p>{cuisines.join(",")}</p>
-        <p>{areaName}</p>
-        <p>{locality}</p>
+        <p>{areaName},{locality}</p>
         <p>{city}</p>
         <h3>{costForTwoMessage}</h3>
         <p>{avgRatingString}</p>
