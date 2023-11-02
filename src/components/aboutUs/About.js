@@ -1,11 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import User from './User'
 
 const About = () => {
+
+
+  const[user,setUser]=useState("");
+
+  useEffect(()=>{
+    fetchUser();
+  },[])
+
+  const fetchUser=async()=>{
+    const data=await fetch('https://api.github.com/users/Shivam-ku539')
+
+    const json=await data.json();
+    console.log("api called",json)
+    setUser(json)
+  }
+
   return (
     <div>
-        <User name={"Shivam"}location={"New Delhi"} contact={"shivam.hms@gmail.com"}/>
-        {/* <h1>About</h1> */}
+        <User name={user.name}location={user.location}
+        image={user.avatar_url}
+        contact={user.email}/>
     </div>
   )
 }

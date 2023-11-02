@@ -72,3 +72,8 @@
   padding: 10px;
   border: 1px solid black;
 }
+.git-img{
+  width: 100px;
+  border: 1px solid gray;
+  border-radius: 20%;
+}
