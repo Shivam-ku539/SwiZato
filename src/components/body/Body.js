@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import RestCards from './Rest-cards'
 import Shimmer from '../Shimmer'
 import { Link } from 'react-router-dom'
+import useActiveStatus from '../../utils/useActiveStatus'
 
 
 const Body = () => {
@@ -19,6 +20,9 @@ const Body = () => {
     setRestList(json2)
     setFilteredList(json2)
   }
+
+  const onlineStatus=useActiveStatus();
+  if(onlineStatus===false)return <h1>Seems you are offline!! Check your internet connection</h1>
 
   return restList.length===0?(<Shimmer/>) : (
     <div className='body'>

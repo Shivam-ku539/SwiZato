@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import {createBrowserRouter,RouterProvider} from 'react-router-dom';
-import About from './components/aboutUs/About' ;
+// import About from './components/aboutUs/About' ;
 import Cart from './components/Cart';
 import Error from './components/Error';
 import Body from './components/body/Body';
 import RestaurantMenu from './components/RestaurantMenu';
+import Shimmer from './components/Shimmer';
+
+const About=lazy(()=>import('./components/aboutUs/About'));
 
 const appRouter=createBrowserRouter([
   {
@@ -20,7 +23,7 @@ const appRouter=createBrowserRouter([
       element:<Body/>
     },{
       path:"/about",
-      element:<About/>
+      element:<Suspense fallback={<Shimmer/>} ><About/></Suspense> 
     },
     {
       path:"/cart",
