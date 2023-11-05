@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className='flex justify-between bg-red-100 shadow-lg mb-2 '>
        <div className='logo-container'>
-       <img className='w-14' alt='Logo' src={LOGO_URL}/>
+       <img className='w-20 h-16' alt='Logo' src={LOGO_URL}/>
        </div>
        <div className='flex items-center'>
          <ul className='flex'>
@@ -23,7 +23,7 @@ const Header = () => {
             <Link to={"/"}>Home</Link>
            </li>
            <li className='px-3'>
-            <Link to={"/cart"}>Cart</Link>
+            <Link to={"/cart"}>🛒Cart</Link>
             </li>
            <li className='px-3'>
             <Link to={"/about"}>About Us</Link>

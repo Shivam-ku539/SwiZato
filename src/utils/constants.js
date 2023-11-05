@@ -1,6 +1,6 @@
 export const CDN_URL='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/';
 
-export const LOGO_URL='https://images-platform.99static.com/1W6O3GChptWgF3mnpDKkr5SbKCw=/90x84:882x876/500x500/top/smart/99designs-contests-attachments/74/74315/attachment_74315262';
+export const LOGO_URL='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh230Ekg64UnyN2XBvJtWf_6lU4TSYijcyEgGza_f5B_yriT25sm7lng3ly9zhsUhBH7Y&usqp=CAU';
 
 export const REST_MENU_IMG_URL='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/'
 
