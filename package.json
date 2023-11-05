@@ -39,7 +39,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "tailwindcss": "^3.3.5"
   },
   "homepage": "https://Shivam-ku539.github.io/SwiZato"
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import Shimmer from './Shimmer';
-import { REST_MENU_IMG_URL, SELECTED_REST_URL } from '../utils/constants';
+import { REST_MENU_IMG_URL } from '../utils/constants';
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
 
@@ -28,7 +28,7 @@ const RestaurantMenu = () => {
         <h3>Recommended</h3>
         <ul>
             {itemCards.map((menu)=><li key={menu.card.info.id}>
-                <img src={REST_MENU_IMG_URL+menu.card.info.imageId}></img>
+                <img alt='restaurant logo' src={REST_MENU_IMG_URL+menu.card.info.imageId}></img>
                 <h3>{ menu.card.info.name}</h3>
             <h4>Rs. { menu.card.info.price/100}</h4>
             <p>{menu.card.info.description} </p> 
