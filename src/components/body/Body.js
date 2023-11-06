@@ -8,6 +8,7 @@ const Body = () => {
   const [restList, setRestList] = useState([]);
   const [filteredrestList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  // const restCardpromoted=withPromotedLabel(RestCards)
 
   useEffect(() => {
     fetchData();
@@ -24,6 +25,7 @@ const Body = () => {
     let json2 = json1.map((x) => x.info);
     setRestList(json2);
     setFilteredList(json2);
+    console.log(json2)
   };
 
   const onlineStatus = useActiveStatus();
@@ -63,7 +65,8 @@ const Body = () => {
             className="bg-slate-200 py-2 mx-3 rounded-md px-1"
             onClick={() => {
               let res1 = restList.filter((filtered) => filtered.avgRating > 4);
-              setRestList(res1);
+              // setRestList(res1);
+              setFilteredList(res1);
             }}
           >
             Top Rated Restaurants
@@ -73,8 +76,10 @@ const Body = () => {
       <div className="flex flex-wrap">
         {filteredrestList.map((restrnt) => (
           <Link key={restrnt.id} to={"/restaurant/" + restrnt.id}>
-            {" "}
-            <RestCards restData={restrnt} />
+            {/* {restrnt.promoted?(
+              <RestCards restData={restrnt}/>
+            ): />} */}
+            <RestCards restData={restrnt}/>
           </Link>
         ))}
       </div>

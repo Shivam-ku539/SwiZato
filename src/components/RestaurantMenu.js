@@ -60,12 +60,12 @@ const RestaurantMenu = () => {
               <h4 className='py-3'>{"₹ "+menu.card.info.price / 100}</h4>
               <p>{menu.card.info.description} </p>
               </div>
-              <div className='flex flex-wrap w-28 my-auto'>
+              <div className='relative w-28 my-auto'>
               <img className=''
                 alt="restaurant logo"
                 src={REST_MENU_IMG_URL + menu.card.info.imageId}
               ></img>
-              <button className='mx-auto h-8 w-10 border border-solid border-black my-auto rounded-lg justify-between text-green-500' onClick={()=>{console.log("Added to cart")}}>ADD</button>
+              <button className='absolute w-24 top-3/4 left-1/4 bg-slate-100 border border-solid border-black rounded-lg text-green-500' onClick={()=>{console.log("Added to cart")}}>ADD</button>
               </div>
               </div>
               <div className=' bg-gray-400 h-[1px] my-3'></div> 
