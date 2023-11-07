@@ -9,7 +9,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom';
 import Cart from './components/Cart';
 import Error from './components/Error';
 import Body from './components/body/Body';
-import RestaurantMenu from './components/RestaurantMenu';
+import RestaurantMenu from './components/restaurantmenu/RestaurantMenu';
 import Shimmer from './components/Shimmer';
 
 const About=lazy(()=>import('./components/aboutUs/About'));
