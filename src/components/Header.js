@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {LOGO_URL} from '../utils/constants';
 import { Link } from 'react-router-dom';
 import useActiveStatus from '../utils/useActiveStatus';
+import UserContext from '../utils/UserContext';
 
 const Header = () => {
+
+  const contextData=useContext(UserContext)
 
   const [btn,setBtn]=useState("Login")
 
@@ -27,6 +30,9 @@ const Header = () => {
             </li>
            <li className='px-3'>
             <Link to={"/about"}>About Us</Link>
+           </li>
+           <li className='font-semibold'>
+            {contextData.loggedInUser}
            </li>
            <button className='px-3' onClick={()=>{btn==='Login'? setBtn('Logout'):setBtn('Login')}} >{btn}</button>
          </ul>

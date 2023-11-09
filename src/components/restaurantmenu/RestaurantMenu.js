@@ -12,6 +12,7 @@ const RestaurantMenu = () => {
     console.log(resInfo)
 
     const[shownIndex,setShownIndex]=useState(0);
+    const[accordianToggle,setAccordianToggle]=useState(true);
     
     if (resInfo==="") return <Shimmer/>;
 
@@ -25,7 +26,7 @@ const RestaurantMenu = () => {
     console.log(filteredCard)
 
   return (
-    <div className="w-5/6 m-auto my-12">
+    <div className="w-9/12 m-auto my-12">
       <div className="flex justify-between">
         <div>
           <h2 className="font-semibold text-xl">{name}</h2>
@@ -70,8 +71,9 @@ const RestaurantMenu = () => {
             //   <div className=' bg-gray-400 h-[1px] my-3'></div> 
             //   </li>
               <RestaurantMenuCategory key={menu.card.card.title} data={menu?.card?.card}
-              shownItems={index===shownIndex && true}
+              shownItems={index===shownIndex && accordianToggle}
               setShownIndex={()=>setShownIndex(index)}
+              setAccordianToggle={()=>setAccordianToggle(!accordianToggle)}
               />
           ))}
     </div>
