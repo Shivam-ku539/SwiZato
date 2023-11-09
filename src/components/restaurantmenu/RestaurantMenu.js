@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Shimmer from '../Shimmer';
-import { REST_MENU_IMG_URL } from '../../utils/constants';
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../../utils/useRestaurantMenu';
 import RestaurantMenuCategory from './RestaurantMenucategory';
@@ -11,11 +10,10 @@ const RestaurantMenu = () => {
 
     const resInfo=useRestaurantMenu(resId)
     console.log(resInfo)
+
+    const[shownIndex,setShownIndex]=useState(0);
     
-
     if (resInfo==="") return <Shimmer/>;
-
-    // console.log(resInfo)
 
     const{areaName,city,locality,name,costForTwoMessage,cuisines,avgRatingString,totalRatingsString}=resInfo?.cards[0]?.card?.card?.info;
 
@@ -30,15 +28,12 @@ const RestaurantMenu = () => {
     <div className="w-5/6 m-auto my-12">
       <div className="flex justify-between">
         <div>
-          {/* <img className='m-auto' src={REST_MENU_IMG_URL+cloudinaryImageId}/> */}
           <h2 className="font-semibold text-xl">{name}</h2>
           <p>{cuisines.join(",")}</p>
           <p>
             {areaName},{locality}
           </p>
           <p>{city}</p>
-          
-          {/* <h3>{costForTwoMessage}</h3> */}
           
         </div>
         <div className="border border-solid border-gray-500 justify-center h-20 w-16 flex flex-wrap rounded-xl">
@@ -55,9 +50,7 @@ const RestaurantMenu = () => {
       <h3 className='px-4 font-bold'>{costForTwoMessage}</h3>
       </div>
       <div className=' bg-black h-[1px] my-9'></div>
-      <h3 className='font-bold text-xl'>Recommended</h3>
-        {/* <ul> */}
-          {filteredCard.map((menu) => (
+          {filteredCard.map((menu,index) => (
             
             // <li key={menu.card.info.id}>
             //   <div className='flex'>
@@ -76,9 +69,11 @@ const RestaurantMenu = () => {
             //   </div>
             //   <div className=' bg-gray-400 h-[1px] my-3'></div> 
             //   </li>
-              <RestaurantMenuCategory data={menu?.card?.card}/>
+              <RestaurantMenuCategory key={menu.card.card.title} data={menu?.card?.card}
+              shownItems={index===shownIndex && true}
+              setShownIndex={()=>setShownIndex(index)}
+              />
           ))}
-        {/* </ul> */}
     </div>
   );
 }
