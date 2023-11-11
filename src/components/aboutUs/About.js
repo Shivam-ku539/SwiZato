@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import User from './User'
+import Shimmer from '../Shimmer';
 
 const About = () => {
 
@@ -18,7 +19,7 @@ const About = () => {
     setUser(json)
   }
 
-  return (
+  return user===""? <Shimmer/> : (
     <div>
         <User name={user.name}location={user.location}
         image={user.avatar_url}

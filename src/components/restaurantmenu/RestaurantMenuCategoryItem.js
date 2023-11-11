@@ -1,7 +1,17 @@
 import React from 'react'
 import { REST_MENU_IMG_URL } from '../../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../reduxStore/cartSlice';
 
 const RestaurantMenuCategoryItem = ({list}) => {
+
+
+  const dispatch=useDispatch();
+
+  const handleaddItem=(item)=>{
+    dispatch(addItem(item))
+  }
+
   return (
     <div>
         {list.map((item)=>(
@@ -19,7 +29,9 @@ const RestaurantMenuCategoryItem = ({list}) => {
                  <div className='w-3/12 relative mx-3 my-6'>
               <img className='rounded-lg' src={REST_MENU_IMG_URL+item.card.info.imageId}></img>
                   {/* <div className=' absolute'> */}
-                  <button className='py-1 px-2 bg-white shadow-lg rounded-lg absolute sm:top-1/2 sm:left-1/4 md:top-2/3 lg:top-3/4 lg:left-1/3 left-2'>Add+</button>
+                  <button
+                   onClick={()=>handleaddItem(item)}  
+                   className='py-1 px-2 bg-white shadow-lg rounded-lg absolute sm:top-1/2 sm:left-1/4 md:top-2/3 lg:top-3/4 lg:left-1/3 left-2'>Add+</button>
                   {/* </div> */}
               
               </div>

@@ -9,7 +9,6 @@ const RestaurantMenu = () => {
     const {resId}=useParams()
 
     const resInfo=useRestaurantMenu(resId)
-    console.log(resInfo)
 
     const[shownIndex,setShownIndex]=useState(0);
     const[accordianToggle,setAccordianToggle]=useState(true);
@@ -23,7 +22,6 @@ const RestaurantMenu = () => {
     const{itemCards}=resInfo?.cards[2]?.groupedCard?. cardGroupMap?.REGULAR?.cards[2]?.card?.card
 
     const filteredCard=resInfo?.cards[2]?.groupedCard?. cardGroupMap?.REGULAR?.cards.filter((x)=>x.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
-    console.log(filteredCard)
 
   return (
     <div className="w-9/12 m-auto my-12">
@@ -53,27 +51,11 @@ const RestaurantMenu = () => {
       <div className=' bg-black h-[1px] my-9'></div>
           {filteredCard.map((menu,index) => (
             
-            // <li key={menu.card.info.id}>
-            //   <div className='flex'>
-            //   <div className='w-10/12'>
-            //   <h3 className='font-bold py-4'>{menu.card.info.name}</h3>
-            //   <h4 className='py-3'>{"₹ "+menu.card.info.price / 100}</h4>
-            //   <p>{menu.card.info.description} </p>
-            //   </div>
-            //   <div className='relative w-28 my-auto'>
-            //   <img className=''
-            //     alt="restaurant logo"
-            //     src={REST_MENU_IMG_URL + menu.card.info.imageId}
-            //   ></img>
-            //   <button className='absolute w-24 top-3/4 left-1/4 bg-slate-100 border border-solid border-black rounded-lg text-green-500' onClick={()=>{console.log("Added to cart")}}>ADD</button>
-            //   </div>
-            //   </div>
-            //   <div className=' bg-gray-400 h-[1px] my-3'></div> 
-            //   </li>
               <RestaurantMenuCategory key={menu.card.card.title} data={menu?.card?.card}
               shownItems={index===shownIndex && accordianToggle}
               setShownIndex={()=>setShownIndex(index)}
               setAccordianToggle={()=>setAccordianToggle(!accordianToggle)}
+              accordianToggle={accordianToggle}
               />
           ))}
     </div>
