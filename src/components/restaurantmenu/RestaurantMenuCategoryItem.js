@@ -1,15 +1,17 @@
 import React from 'react'
 import { REST_MENU_IMG_URL } from '../../utils/constants';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../reduxStore/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, getTotal } from '../../reduxStore/cartSlice';
+import { addRest } from '../../reduxStore/cartSlice';
 
-const RestaurantMenuCategoryItem = ({list}) => {
-
+const RestaurantMenuCategoryItem = ({list,cartItemRestaurant}) => {
 
   const dispatch=useDispatch();
 
-  const handleaddItem=(item)=>{
+  const handleaddItem=(item,cartItemRestaurant)=>{
     dispatch(addItem(item))
+    dispatch(getTotal(item))
+    dispatch(addRest(cartItemRestaurant))
   }
 
   return (
@@ -28,11 +30,9 @@ const RestaurantMenuCategoryItem = ({list}) => {
                 </div>
                  <div className='w-3/12 relative mx-3 my-6'>
               <img className='rounded-lg' src={REST_MENU_IMG_URL+item.card.info.imageId}></img>
-                  {/* <div className=' absolute'> */}
                   <button
-                   onClick={()=>handleaddItem(item)}  
+                   onClick={()=>handleaddItem(item,cartItemRestaurant)}  
                    className='py-1 px-2 bg-white shadow-lg rounded-lg absolute sm:top-1/2 sm:left-1/4 md:top-2/3 lg:top-3/4 lg:left-1/3 left-2'>Add+</button>
-                  {/* </div> */}
               
               </div>
             </div>

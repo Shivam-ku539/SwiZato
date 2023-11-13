@@ -14,7 +14,6 @@ const useRestaurantMenu=(resId)=>{
             SELECTED_REST_URL+resId
         )
         const json=await data.json();
-        console.log(json)
         setResInfo(json.data)
     }
     return resInfo;

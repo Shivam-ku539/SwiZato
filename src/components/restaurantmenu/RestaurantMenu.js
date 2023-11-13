@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
     const resInfo=useRestaurantMenu(resId)
 
     const[shownIndex,setShownIndex]=useState(0);
-    const[accordianToggle,setAccordianToggle]=useState(true);
+    const[accordianToggle,setAccordianToggle]=useState(false);
     
     if (resInfo==="") return <Shimmer/>;
 
@@ -56,6 +56,7 @@ const RestaurantMenu = () => {
               setShownIndex={()=>setShownIndex(index)}
               setAccordianToggle={()=>setAccordianToggle(!accordianToggle)}
               accordianToggle={accordianToggle}
+              cartItemRestaurant={resInfo?.cards[0]?.card?.card?.info}
               />
           ))}
     </div>

@@ -19,9 +19,9 @@ const Body = () => {
     );
     const json = await data.json();
     const json1 =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+     await json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    let json2 = json1.map((x) => x.info);
+    let json2 =await json1.map((x) => x.info);
     setRestList(json2);
     setFilteredList(json2);
   };

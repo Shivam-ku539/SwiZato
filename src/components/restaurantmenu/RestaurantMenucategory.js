@@ -1,10 +1,16 @@
+// import { useDispatch } from "react-redux";
 import RestaurantMenuCategoryItem from "./RestaurantMenuCategoryItem";
+// import { addRest } from "../../reduxStore/cartSlice";
 
-const RestaurantMenuCategory=({data,shownItems,setShownIndex,setAccordianToggle,accordianToggle})=>{
+const RestaurantMenuCategory=({data,shownItems,setShownIndex,setAccordianToggle,accordianToggle,cartItemRestaurant})=>{
     
+    // const dispatch=useDispatch();
+
     const handleClick=()=>{
         setShownIndex()
         setAccordianToggle()
+        // dispatch(addRest(cartItemRestaurant))
+
     }
 
     return(
@@ -15,6 +21,7 @@ const RestaurantMenuCategory=({data,shownItems,setShownIndex,setAccordianToggle,
                 <span>{accordianToggle===true ? "🔼": "🔽"} </span>
                 </div>
             {shownItems && <RestaurantMenuCategoryItem list={data.itemCards}
+            cartItemRestaurant={cartItemRestaurant}
             
             />}
             </div>
