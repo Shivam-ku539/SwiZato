@@ -1,7 +1,7 @@
 import React from 'react'
 import { REST_MENU_IMG_URL } from '../../utils/constants';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem, getTotal } from '../../reduxStore/cartSlice';
+import { useDispatch} from 'react-redux';
+import { addItem } from '../../reduxStore/cartSlice';
 import { addRest } from '../../reduxStore/cartSlice';
 
 const RestaurantMenuCategoryItem = ({list,cartItemRestaurant}) => {
@@ -10,7 +10,6 @@ const RestaurantMenuCategoryItem = ({list,cartItemRestaurant}) => {
 
   const handleaddItem=(item,cartItemRestaurant)=>{
     dispatch(addItem(item))
-    dispatch(getTotal(item))
     dispatch(addRest(cartItemRestaurant))
   }
 
@@ -29,7 +28,7 @@ const RestaurantMenuCategoryItem = ({list,cartItemRestaurant}) => {
                     <p className='text-sm py-2'>{item.card.info.description}</p>
                 </div>
                  <div className='w-3/12 relative mx-3 my-6'>
-              <img className='rounded-lg' src={REST_MENU_IMG_URL+item.card.info.imageId}></img>
+              <img alt='menu img' className='rounded-lg' src={REST_MENU_IMG_URL+item.card.info.imageId}></img>
                   <button
                    onClick={()=>handleaddItem(item,cartItemRestaurant)}  
                    className='py-1 px-2 bg-white shadow-lg rounded-lg absolute sm:top-1/2 sm:left-1/4 md:top-2/3 lg:top-3/4 lg:left-1/3 left-2'>Add+</button>

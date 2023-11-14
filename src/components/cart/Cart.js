@@ -4,6 +4,7 @@ import RestaurantMenuCategoryItem from '../restaurantmenu/RestaurantMenuCategory
 import { clearCart } from '../../reduxStore/cartSlice'
 import { CDN_URL } from '../../utils/constants'
 import CartItems from './CartItems'
+import EmptyCart from './EmptyCart'
 
 const Cart = () => {
 
@@ -18,7 +19,9 @@ const Cart = () => {
     dispatch(clearCart())
   }
 
- if (restData.length===0)  return (<h1 className='font-bold m-auto'>Seems nothing here...</h1>) 
+ if (restData.length===0)  return(
+  <EmptyCart/>
+ ) 
 
   return(
   <div className='bg-slate-100 shadow-lg w-2/3 m-auto my-8'>

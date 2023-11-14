@@ -24,15 +24,7 @@ const cartSlice=createSlice({
             console.log(action.payload)
             console.log(current (state.restaurant))
         },
-        getTotal:(state,action)=>{
-            console.log(action.payload)
-            let {total,quantity}= state.items.reduce((x,y)=>{
-                const {price}=x
-                console.log(price)
-                console.log(total,quantity)
-            })
-        }
     }
 })
-export const {addItem,removeItem,clearCart,addRest,getTotal}=cartSlice.actions;
+export const {addItem,removeItem,clearCart,addRest}=cartSlice.actions;
 export default cartSlice.reducer;
