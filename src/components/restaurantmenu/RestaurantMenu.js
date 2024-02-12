@@ -1,12 +1,18 @@
 import React, { useState } from 'react'
 import Shimmer from '../Shimmer';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useRestaurantMenu from '../../utils/useRestaurantMenu';
 import RestaurantMenuCategory from './RestaurantMenucategory';
+import { useSelector } from 'react-redux';
 
 const RestaurantMenu = () => {
    
     const {resId}=useParams()
+    const items=useSelector((store)=>store.cart.items)
+    let totalSum=0;
+    items.forEach((item)=>{
+       totalSum=totalSum+(item.card.info.price/100 || item.card.info.defaultPrice/100)
+    })
 
     const resInfo=useRestaurantMenu(resId)
 
@@ -59,6 +65,10 @@ const RestaurantMenu = () => {
               cartItemRestaurant={resInfo?.cards[0]?.card?.card?.info}
               />
           ))}
+          {items.length!=0?<div className='bg-green-400 fixed h-11 bottom-1 w-[75%] rounded-sm'><span className='text-white font-bold text-sm px-2 my-3 float-left '>{items.length} items | ₹{totalSum}</span>
+          <Link className='text-white font-bold text-sm px-2 my-3 float-right mx-4' to={"/cart"}>🛒 View Cart</Link>
+           </div>:null}
+          
     </div>
   );
 }
