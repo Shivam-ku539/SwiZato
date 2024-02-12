@@ -6,7 +6,7 @@ import useActiveStatus from "../../utils/useActiveStatus";
 
 
 const Body = () => {
-  const [restList, setRestList] = useState([0]);
+  const [restList, setRestList] = useState([]);
   const [filteredrestList, setFilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
   
@@ -16,7 +16,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6865235&lng=77.3470746&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swigg.com/dapi/restaurants/list/v5?lat=28.6865235&lng=77.3470746&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json);
@@ -32,7 +32,7 @@ const Body = () => {
 
   if (onlineStatus === false) return <h1>Seems you are offline!! Check your internet connection</h1>;
 
-  if (restList.length === 0) return <h1>Seems you are offline!! Check your internet connection</h1>
+  if (restList.length === 0) return <Shimmer/>
 
      return (
     <div className="my-16">
